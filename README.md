@@ -1,46 +1,47 @@
 # CAFNA-Agenda
 
-CAFNA-Agenda est une application web permettant de gérer et consulter l’agenda du CAF de Nantes. Elle offre une interface simple pour visualiser, ajouter et modifier des événements.
+CAFNA-Agenda est une page web permettant de consulter facilement l’agenda des activités du Club Alpin Français de Nantes (CAFNA).
+
+## Présentation
+
+La page affiche sous forme de cartes toutes les activités à venir du club, récupérées automatiquement depuis le site officiel. Chaque carte présente :
+
+- Le type d’activité (randonnée, escalade, etc.)
+- La date de l’événement
+- Le titre de l’activité (avec lien vers la fiche détaillée)
+- Le lieu
+- Le contact organisateur
+- Le niveau physique et technique requis (de 1 à 4)
+- Le nombre de places
+- Le statut des inscriptions
+- Un bouton pour ajouter l’événement à Google Agenda
 
 ## Fonctionnalités
 
-- Visualisation des événements à venir
-- Ajout, modification et suppression d’événements (selon les droits)
-- Recherche et filtrage par date ou catégorie
-- Interface responsive adaptée aux mobiles
+- **Filtrage** par type d’activité (boutons en haut)
+- **Recherche** par titre ou lieu (barre de recherche)
+- **Tri** par date croissante/décroissante
+- **Thème sombre** (bouton en haut à droite)
+- **Bouton retour haut de page**
+- **Responsive** : s’adapte à tous les écrans
 
-## Installation
+## Utilisation
 
-1. **Cloner le dépôt :**
-   ```bash
-   git clone https://github.com/yourusername/CAFNA-Agenda.git
-   ```
-2. **Se placer dans le dossier du projet :**
-   ```bash
-   cd CAFNA-Agenda
-   ```
-3. **Installer les dépendances :**
-   ```bash
-   npm install
-   ```
-4. **Démarrer le serveur de développement :**
-   ```bash
-   npm start
-   ```
-5. **Accéder à l’application :**  
-   Ouvrez votre navigateur à l’adresse [http://localhost:3000](http://localhost:3000)
+1. Ouvrez simplement le fichier `Index.html` dans votre navigateur.
+2. Utilisez les filtres, la recherche ou le tri pour trouver une activité.
+3. Cliquez sur le titre d’une activité pour plus de détails, ou sur le bouton Google Agenda pour l’ajouter à votre calendrier.
+
+> **Remarque** : Les données sont récupérées en temps réel depuis le site du CAFNA. Une connexion internet est donc nécessaire.
 
 ## Structure du projet
 
-- `src/` : Code source de l’application
-- `public/` : Fichiers statiques
-- `README.md` : Ce fichier d’aide
+- `Index.html` : Page principale, tout-en-un (HTML, CSS, JS)
+- Pas d’installation ni de dépendances requises
 
 ## Contribution
 
-Les contributions sont les bienvenues !  
-Merci de créer une issue ou une pull request pour toute suggestion ou amélioration.
+Pour toute suggestion ou amélioration, ouvrez une issue ou une pull request.
 
 ## Licence
 
-Ce projet est sous licence MIT.
+Projet sous licence

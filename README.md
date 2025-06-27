@@ -1,6 +1,7 @@
 # CAFNA-Agenda
-
 CAFNA-Agenda est une page web permettant de consulter facilement l’agenda des activités du Club Alpin Français de Nantes (CAFNA).
+
+👉 [Accéder à la démo en ligne](https://teo-test.github.io/CAFNA-Agenda/CAFNA-Agenda.html)
 
 ## Présentation
 

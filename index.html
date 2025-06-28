@@ -146,6 +146,17 @@
             places, niveauPhysique, niveauTechnique, dispo, contact
           });
         });
+        const previousIds = JSON.parse(localStorage.getItem('cafna_events_ids') || '[]');
+        const currentIds = eventsData.map(ev => ev.title + ev.dateText); // ou un autre identifiant unique
+
+        const newIds = currentIds.filter(id => !previousIds.includes(id));
+        if (newIds.length > 0 && Notification.permission === "granted") {
+          new Notification("Nouvelle activité publiée !", {
+            body: `${newIds.length} nouvelle(s) activité(s) ajoutée(s) à l'agenda.`,
+            icon: "https://www.ffcam.fr/csx/scripts/resizer.php?filename=STADATA_FFCAM%2Fimg1%2Fed%2F10%2Fi9v62wrpbcp&mime=image%252Fjpeg&originalname=picto_ffcam_couleur.jpg&geometry=270x%3E"
+          });
+        }
+        localStorage.setItem('cafna_events_ids', JSON.stringify(currentIds));
         applyFilters();
         if (Notification.permission === "granted") {
           new Notification("Agenda mis à jour", {

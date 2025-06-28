@@ -112,11 +112,12 @@
     let isListView = false;
 
 
-    fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`)
-      .then(response => response.json())
+    fetch(`https://corsproxy.io/?${encodeURIComponent(url)}`)
+      .then(response => response.text())
       .then(data => {
+        // data contient le HTML directement
         const parser = new DOMParser();
-        const doc = parser.parseFromString(data.contents, 'text/html');
+        const doc = parser.parseFromString(data, 'text/html');
         const rows = doc.querySelectorAll('.agenda_liste');
         eventsData = [];
 

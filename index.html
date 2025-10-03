@@ -148,18 +148,47 @@
   </button>
 
   <script>
-    const clubUrls = {
-      nantes: "https://clubalpin.nantes.ffcam.fr/index.php?&contentonly=1&moid=3&function=viewsection&oidit=T003:4fp41t2pd7d6&oidsection=b34179abe57cc45535ffcdf0babc96ff&template=viewsection.html&tplentry=it&sectionopts[b34179abe57cc45535ffcdf0babc96ff][first]=0&sectionopts[b34179abe57cc45535ffcdf0babc96ff][insidefilter]=1&activit=&_raw=1&_ajax=1",
-      paysdelaloire: "https://cr-paysdeloire.ffcam.fr/index.php?&contentonly=1&moid=3&function=viewsection&oidit=T003:4fp41t2pd7d6&oidsection=7ae10ab835a2bedabf04e34c3777d743&template=viewsection.html&tplentry=it&sectionopts[7ae10ab835a2bedabf04e34c3777d743][first]=0&sectionopts[7ae10ab835a2bedabf04e34c3777d743][insidefilter]=1&activit=&_raw=1&_ajax=1&_=1759482169039"
-    };
-    const clubDomains = {
-      nantes: "clubalpin.nantes.ffcam.fr",
-      paysdelaloire: "cr-paysdeloire.ffcam.fr"
-    };
+    let clubsConfig = {};
+    let clubUrls = {};
+    let clubDomains = {};
     let currentClub = "nantes";
     let eventsData = [];
     let currentEvents = [];
     let isListView = false;
+
+    // Charger la configuration des clubs
+    fetch('clubs.json')
+      .then(response => response.json())
+      .then(data => {
+        clubsConfig = data.clubs;
+        // Construire les objets clubUrls et clubDomains
+        clubsConfig.forEach(club => {
+          clubUrls[club.id] = club.agendaUrl;
+          clubDomains[club.id] = club.domain;
+        });
+
+        // Générer les options du sélecteur
+        const clubSelector = document.getElementById('clubSelector');
+        clubSelector.innerHTML = clubsConfig.map(club =>
+          `<option value="${club.id}">${club.name}</option>`
+        ).join('');
+
+        // Charger le club par défaut
+        loadClubEvents(currentClub);
+      })
+      .catch(err => {
+        console.error('Erreur lors du chargement de la configuration des clubs:', err);
+        // Configuration de secours
+        clubUrls = {
+          nantes: "https://clubalpin.nantes.ffcam.fr/index.php?&contentonly=1&moid=3&function=viewsection&oidit=T003:4fp41t2pd7d6&oidsection=b34179abe57cc45535ffcdf0babc96ff&template=viewsection.html&tplentry=it&sectionopts[b34179abe57cc45535ffcdf0babc96ff][first]=0&sectionopts[b34179abe57cc45535ffcdf0babc96ff][insidefilter]=1&activit=&_raw=1&_ajax=1",
+          paysdelaloire: "https://cr-paysdeloire.ffcam.fr/index.php?&contentonly=1&moid=3&function=viewsection&oidit=T003:4fp41t2pd7d6&oidsection=7ae10ab835a2bedabf04e34c3777d743&template=viewsection.html&tplentry=it&sectionopts[7ae10ab835a2bedabf04e34c3777d743][first]=0&sectionopts[7ae10ab835a2bedabf04e34c3777d743][insidefilter]=1&activit=&_raw=1&_ajax=1&_=1759482169039"
+        };
+        clubDomains = {
+          nantes: "clubalpin.nantes.ffcam.fr",
+          paysdelaloire: "cr-paysdeloire.ffcam.fr"
+        };
+        loadClubEvents(currentClub);
+      });
 
     // Forcer la vue liste sur mobile
     function updateViewMode() {
@@ -257,9 +286,6 @@
         document.getElementById('events').innerHTML = "<p class='text-red-500'>Impossible de charger l'agenda. Vérifiez votre connexion.</p>";
       });
     }
-
-    // Charger le club par défaut au démarrage
-    loadClubEvents(currentClub);
 
     function renderEvents(data) {
       const container = document.getElementById('events');

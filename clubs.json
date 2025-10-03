@@ -1,0 +1,18 @@
+{
+  "clubs": [
+    {
+      "id": "nantes",
+      "name": "Club Alpin Français - Nantes",
+      "shortName": "CAFNA",
+      "domain": "clubalpin.nantes.ffcam.fr",
+      "agendaUrl": "https://clubalpin.nantes.ffcam.fr/index.php?&contentonly=1&moid=3&function=viewsection&oidit=T003:4fp41t2pd7d6&oidsection=b34179abe57cc45535ffcdf0babc96ff&template=viewsection.html&tplentry=it&sectionopts[b34179abe57cc45535ffcdf0babc96ff][first]=0&sectionopts[b34179abe57cc45535ffcdf0babc96ff][insidefilter]=1&activit=&_raw=1&_ajax=1"
+    },
+    {
+      "id": "paysdelaloire",
+      "name": "Club Alpin - Pays de la Loire",
+      "shortName": "CAF Pays de la Loire",
+      "domain": "cr-paysdeloire.ffcam.fr",
+      "agendaUrl": "https://cr-paysdeloire.ffcam.fr/index.php?&contentonly=1&moid=3&function=viewsection&oidit=T003:4fp41t2pd7d6&oidsection=7ae10ab835a2bedabf04e34c3777d743&template=viewsection.html&tplentry=it&sectionopts[7ae10ab835a2bedabf04e34c3777d743][first]=0&sectionopts[7ae10ab835a2bedabf04e34c3777d743][insidefilter]=1&activit=&_raw=1&_ajax=1&_=1759482169039"
+    }
+  ]
+}
